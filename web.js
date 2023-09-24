@@ -14,13 +14,36 @@ function calculate() {
     document.querySelector('#result span').textContent = totalCost;
 }
 
+let totalCost = 0;
+
+function confirmPageCount(elementId, nextElementId) {
+    let pageCount = parseInt(document.getElementById(elementId).value);
+    totalCost += pageCount * 1000; // 假设每页1000円
+
+    // 隐藏当前选项并显示下一个选项
+    document.getElementById('pageCount').style.display = 'none';
+    if (nextElementId) {
+        document.getElementById(nextElementId).style.display = 'block';
+    }
+
+    // 实时更新费用
+    document.querySelector('#result span').textContent = totalCost;
+}
+
+function confirmPublishTime() {
+    let value = document.getElementById('publishTimeSelect').value;
+    totalCost += parseInt(value);
+
+    // 隐藏当前选项
+    document.getElementById('publishTime').style.display = 'none';
+
+    // 实时更新费用
+    document.querySelector('#result span').textContent = totalCost;
+}
+
 function selectOption(elementId, value, nextElementId) {
-    // 设置选中的值
-    let selectedValue = document.createElement('input');
-    selectedValue.type = 'hidden';
-    selectedValue.id = elementId + 'Value';
-    selectedValue.value = value;
-    document.body.appendChild(selectedValue);
+    // 更新总费用
+    totalCost += value;
 
     // 隐藏当前选项并显示下一个选项
     document.getElementById(elementId).style.display = 'none';
@@ -29,5 +52,5 @@ function selectOption(elementId, value, nextElementId) {
     }
 
     // 实时更新费用
-    calculate();
+    document.querySelector('#result span').textContent = totalCost;
 }

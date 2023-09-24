@@ -16,24 +16,25 @@
                 <button onclick="selectOption('type', 5000, 'domain')">個人ブログ</button>
         </div>
 
-        <div class="option" id="domain">
+        <div class="option" id="domain" style="display: none;">
             <label>ドメイン名申請代行:</label>
                 <button onclick="selectOption('domain', 0, 'server')">なし</option>
                 <button onclick="selectOption('domain', 10000, 'server')">あり</option>
         </div>
 
-        <div class="option" id="server">
+        <div class="option" id="server" style="display: none;">
             <label>レンタルサーバー申請代行:</label>
                 <button onclick="selectOption('server', 0, 'pageCount')">なし</option>
                 <button onclick="selectOption('server', 10000, 'pageCount')">あり</option>
         </div>
 
-        <div class="option" id="pageCount">
+        <div class="option" id="pageCount" style="display: none;">
             <label>ホームページ枚数:</label>
-            <button onclick="selectOption('pageInput', 1, 'photos')">
-        </div>        
+            <input type="number" id="pageInput" min="1" value="1">
+            <button onclick="confirmPageCount('pageInput', 'photos')">確認</button>
+        </div>              
 
-        <div class="option" id="photos">
+        <div class="option" id="photos" style="display: none;">
             <label>写真:</label>
                 <button onclick="selectOption('photos', 0, 'contentPlan')">なし</option>
                 <button onclick="selectOption('photos', 1000, 'contentPlan')">6枚</option>
@@ -41,7 +42,7 @@
                 <button onclick="selectOption('photos', 3000, 'contentPlan')">10枚以上</option>
         </div>
 
-        <div class="option" id="contentPlan">
+        <div class="option" id="contentPlan" style="display: none;">
             <label>コンテンツ企画:</label>
                 <button onclick="selectOption('contentPlan', 0, 'cms')">なし</option>
                 <button onclick="selectOption('contentPlan', 5000, 'cms')">6枚</option>
@@ -49,33 +50,34 @@
                 <button onclick="selectOption('contentPlan', 15000, 'cms')">10枚以上</option>
         </div>
 
-        <div class="option" id="cms">
+        <div class="option" id="cms" style="display: none;">
             <label>CMSの導入:</label>
                 <button onclick="selectOption('cms', 0, 'smartphone')">なし</option>
                 <button onclick="selectOption('cms', 5000, 'smartphone')">あり</option>
         </div>
 
-        <div class="option" id="smartphone">
+        <div class="option" id="smartphone" style="display: none;">
             <label>スマートフォン対応:</label>
                 <button onclick="selectOption('smartphone', 0, 'seo')">なし</option>
                 <button onclick="selectOption('smartphone', 5000, 'seo')">あり</option>
         </div>
 
-        <div class="option" id="seo">
+        <div class="option" id="seo" style="display: none;">
             <label>SEO対応:</label>
                 <button onclick="selectOption('seo', 0, 'publishTime')">なし</option>
                 <button onclick="selectOption('seo', 5000, 'publishTime')">あり</option>
         </div>
 
-        <div class="option" id="publishTime">
+        <div class="option" id="publishTime" style="display: none;">
             <label>公開時間:</label>
-            <select>
-                <button onclick="selectOption('publishTime', 0)">1ヶ月</option>
-                <button onclick="selectOption('publishTime', 1000)">2ヶ月</option>
-                <button onclick="selectOption('publishTime', 2000)">3ヶ月</option>
-                <button onclick="selectOption('publishTime', 3000)">それ以上</option>
+            <select id="publishTimeSelect">
+                <option value="0">1ヶ月</option>
+                <option value="1000">2ヶ月</option>
+                <option value="2000">3ヶ月</option>
+                <option value="3000">それ以上</option>
             </select>
-        </div>
+            <button onclick="confirmPublishTime()">確認</button>
+        </div>              
 
         <div id="result">合計料金: <span>0</span> 円</div>
     </div>
