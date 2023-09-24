@@ -14,12 +14,20 @@ function calculate() {
     document.querySelector('#result span').textContent = totalCost;
 }
 
-function updateCostAndShowNext(currentElement, nextElementId) {
-    // 更新费用
-    calculate();
+function selectOption(elementId, value, nextElementId) {
+    // 设置选中的值
+    let selectedValue = document.createElement('input');
+    selectedValue.type = 'hidden';
+    selectedValue.id = elementId + 'Value';
+    selectedValue.value = value;
+    document.body.appendChild(selectedValue);
 
-    // 显示下一个选项
+    // 隐藏当前选项并显示下一个选项
+    document.getElementById(elementId).style.display = 'none';
     if (nextElementId) {
         document.getElementById(nextElementId).style.display = 'block';
     }
+
+    // 实时更新费用
+    calculate();
 }

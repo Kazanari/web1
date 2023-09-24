@@ -1,22 +1,37 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     padding: 20px;
 }
 
+h1 {
+    text-align: center;
+}
+
 .simulator {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
     width: 300px;
     margin: 0 auto;
 }
 
+.option {
+    margin-bottom: 20px;
+}
+
 button {
     display: block;
-    margin-top: 20px;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
 }
 
 #result {
+    font-size: 24px;
+    text-align: center;
     margin-top: 20px;
-    font-weight: bold;
 }
