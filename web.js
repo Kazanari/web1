@@ -13,3 +13,13 @@ function calculate() {
     let totalCost = typeCost + domainCost + serverCost + pageCountCost + photosCost + contentPlanCost + cmsCost + smartphoneCost + seoCost + publishTimeCost;
     document.querySelector('#result span').textContent = totalCost;
 }
+
+function updateCostAndShowNext(currentElement, nextElementId) {
+    // 更新费用
+    calculate();
+
+    // 显示下一个选项
+    if (nextElementId) {
+        document.getElementById(nextElementId).style.display = 'block';
+    }
+}

@@ -9,73 +9,93 @@
 <body>
     <h1>ホームページ料金シミュレーター</h1>
     <div class="simulator">
-        <label>ホームページのタイプ:</label>
-        <select id="type">
-            <option value="10000">企業公式サイト</option>
-            <option value="20000">ECサイト</option>
-            <option value="5000">個人ブログ</option>
-        </select>
+        <div class="option">
+            <label>ホームページのタイプ:</label>
+            <select id="type" onchange="updateCostAndShowNext(this, 'domain')">
+                <option value="10000">企業公式サイト</option>
+                <option value="20000">ECサイト</option>
+                <option value="5000">個人ブログ</option>
+            </select>
+        </div>
 
-        <label>ドメイン名申請代行:</label>
-        <select id="domain">
-            <option value="0">なし</option>
-            <option value="2000">あり</option>
-        </select>
+        <div class="option" id="domain" style="display: none;">
+            <label>ドメイン名申請代行:</label>
+            <select onchange="updateCostAndShowNext(this, 'server')">
+                <option value="0">なし</option>
+                <option value="2000">あり</option>
+            </select>
+        </div>
 
-        <label>レンタルサーバー申請代行:</label>
-        <select id="server">
-            <option value="0">なし</option>
-            <option value="3000">あり</option>
-        </select>
+        <div class="option" id="server" style="display: none;">
+            <label>レンタルサーバー申請代行:</label>
+            <select onchange="updateCostAndShowNext(this, 'pageCount')">
+                <option value="0">なし</option>
+                <option value="3000">あり</option>
+            </select>
+        </div>
 
-        <label>ホームページ枚数:</label>
-        <input type="number" id="pageCount" value="1">
+        <div class="option" id="pageCount" style="display: none;">
+            <label>ホームページ枚数:</label>
+            <input type="number" id="pageInput" value="1" onchange="updateCostAndShowNext(this, 'photos')">
+        </div>
 
-        <label>写真:</label>
-        <select id="photos">
-            <option value="0">なし</option>
-            <option value="1000">6枚</option>
-            <option value="1500">10枚</option>
-            <option value="2000">10枚以上</option>
-        </select>
+        <div class="option" id="photos" style="display: none;">
+            <label>写真:</label>
+            <select onchange="updateCostAndShowNext(this, 'contentPlan')">
+                <option value="0">なし</option>
+                <option value="1000">6枚</option>
+                <option value="1500">10枚</option>
+                <option value="2000">10枚以上</option>
+            </select>
+        </div>
 
-        <label>コンテンツ企画:</label>
-        <select id="contentPlan">
-            <option value="0">なし</option>
-            <option value="5000">6枚</option>
-            <option value="7000">10枚</option>
-            <option value="9000">10枚以上</option>
-        </select>
+        <div class="option" id="contentPlan" style="display: none;">
+            <label>コンテンツ企画:</label>
+            <select onchange="updateCostAndShowNext(this, 'cms')">
+                <option value="0">なし</option>
+                <option value="5000">6枚</option>
+                <option value="7000">10枚</option>
+                <option value="9000">10枚以上</option>
+            </select>
+        </div>
 
-        <label>CMSの導入:</label>
-        <select id="cms">
-            <option value="0">なし</option>
-            <option value="5000">あり</option>
-        </select>
+        <div class="option" id="cms" style="display: none;">
+            <label>CMSの導入:</label>
+            <select onchange="updateCostAndShowNext(this, 'smartphone')">
+                <option value="0">なし</option>
+                <option value="5000">あり</option>
+            </select>
+        </div>
 
-        <label>スマートフォン対応:</label>
-        <select id="smartphone">
-            <option value="0">なし</option>
-            <option value="3000">あり</option>
-        </select>
+        <div class="option" id="smartphone" style="display: none;">
+            <label>スマートフォン対応:</label>
+            <select onchange="updateCostAndShowNext(this, 'seo')">
+                <option value="0">なし</option>
+                <option value="5000">あり</option>
+            </select>
+        </div>
 
-        <label>SEO対応:</label>
-        <select id="seo">
-            <option value="0">なし</option>
-            <option value="4000">あり</option>
-        </select>
+        <div class="option" id="seo" style="display: none;">
+            <label>SEO対応:</label>
+            <select onchange="updateCostAndShowNext(this, 'publishTime')">
+                <option value="0">なし</option>
+                <option value="5000">あり</option>
+            </select>
+        </div>
 
-        <label>公開時間:</label>
-        <select id="publishTime">
-            <option value="0">1ヶ月</option>
-            <option value="1000">2ヶ月</option>
-            <option value="2000">3ヶ月</option>
-            <option value="3000">それ以上</option>
-        </select>
+        <div class="option" id="publishTime" style="display: none;">
+            <label>公開時間:</label>
+            <select onchange="updateCostAndShowNext(this, 'publishTime')">
+                <option value="0">1ヶ月</option>
+                <option value="1000">2ヶ月</option>
+                <option value="2000">3ヶ月</option>
+                <option value="3000">それ以上</option>
+            </select>
+        </div>
 
         <button onclick="calculate()">料金を計算する</button>
         <div id="result">合計料金: <span>0</span> 円</div>
     </div>
-    <script src="web.css"></script>
+    <script src="web.js"></script>
 </body>
 </html>
